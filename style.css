@@ -1,0 +1,97 @@
+body {
+	background-color: powderblue;
+}
+
+:root {
+
+}
+
+/*
+selector::pseudo-element { 
+          list of pseudo-elements
+		::after	 after last child of selector
+		::before before first child of selector
+		::cue
+		::first-letter
+		::first-line
+		::placeholder
+		::selection 
+	property: value;
+}
+*/
+
+ul {
+	list-style: none;
+	line-height: 2em;
+}
+
+.tree summary {
+	cursor:pointer;
+}
+
+.tree summary::marker {
+	display:none;
+}
+
+.tree summary::-webkit-details-marker{
+	display:none;
+}
+
+/* summary { list-style: none; }; */
+
+ul li {
+	position: relative;
+	/* outline: 1px solid green; */ /* outline used for development */
+}
+
+ul li::before {
+	position: absolute;
+	left: -10px;
+	top: 0px;
+	border-left: 2px solid gray;
+	border-bottom: 2px solid gray;
+	content: "";
+	width: 8px;
+	height: 1em;
+}
+
+ul li::after {
+	position: absolute;
+	left: -10px;
+	bottom: 0px;
+	border-left: 2px solid gray;
+	content: "";
+	width: 8px;
+	height: 100%;
+
+}
+
+ul li:last-child::after {
+	display: none;
+}
+
+ul.tree > li:after, ul.tree > li:before {
+	display: none;
+}
+
+ul summary::before {
+	position: absolute;
+	left: -1.25em;
+	top: 0.55em;
+	content:"+";
+	background: orange;
+	display: block;
+	width: 15px;
+	height: 15px;
+	border-radius: 50em;
+	z-index: 999;
+	text-align: center;
+	line-height: 0.90em;
+}
+
+ul details[open] > summary::before {
+	content:"-";
+}
+
+summary { list-style: none; }; /* this was the only way I could remove the */
+			       /* <details> tag tiangle */
